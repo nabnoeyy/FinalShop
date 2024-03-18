@@ -1,5 +1,11 @@
+/**
+ * ประกาศตัวแปร cart เป็น Object ว่างใช้เก็บข้อมูลสินค้าในรถเข็นเริ่มต้น
+ */
 const cart = {};
 
+/**
+ * ใช้ querySelectorAll เลือกทุก element ที่อยู่ class ของ add-to-cart และใช้ forEach loop เพื่อเพิ่ม even ที่จะทำงานเมื่อมีการคลิกปุ่ม Add to Cart ในหน้า website
+ */
 document.querySelectorAll(".add-to-cart").forEach((button) => {
   button.addEventListener("click", () => {
     const productId = button.getAttribute("data-product-id");
@@ -13,6 +19,7 @@ document.querySelectorAll(".add-to-cart").forEach((button) => {
   });
 });
 
+/**ฟังก์ชันนี้มีหน้าที่ในการอัปเดตและแสดงผลของรถเข็นในหน้าเว็บให้เป็นตรงกับข้อมูลในตัวแปล Cart={} โดยผู้ใช้จะสามารถเห็นสถานะปัจจุบันของรถเข็นได้ และเพิ่มปุ่มเพื่อลบสินค้าออกได้ จะมีปุ่มลบสินค้าแต่ละชิ้นที่อยู่ในตารางของรถเข็น */
 function updateCartDisplay() {
   const cartElement = document.getElementById("cart");
   cartElement.innerHTML = "";
@@ -89,16 +96,12 @@ function updateCartDisplay() {
   }
 }
 
+/** จะเพิ่ม event ให้กับ element ที่มี id printCart เมื่อมีการคลิก Print Cart Recipt บิลใบเสร็จของสินค้า. */
 document.getElementById("printCart").addEventListener("click", () => {
   printReceipt("Thank you!", generateCartReceipt());
 });
 
-// document
-//   .getElementById("printProductReceipts")
-//   .addEventListener("click", () => {
-//     printReceipt("Product Receipts", generateProductReceipts());
-//   });
-
+/**ฟังก์ชันนี้ใช้สำหรับพิมพ์บิลใบเสร็จของสินค้า จะเปิดหน้าต่างใหม่และพิมพ์บิลใบเสร็จของสินค้า.*/
 function printReceipt(title, content) {
   const printWindow = window.open("1", "_blank");
   printWindow.document.write(
@@ -108,6 +111,7 @@ function printReceipt(title, content) {
   printWindow.print();
 }
 
+/** ฟังก์ชันนี้ใช้สำหรับสร้างเนื้อหาในใบเสร็จของ Cart.*/
 function generateCartReceipt() {
   let receiptContent = "<h2>Cart Receipt</h2>";
 
@@ -124,11 +128,14 @@ function generateCartReceipt() {
   return receiptContent;
 }
 
+/**
+ * สร้างบิลใบเสร็จของสินค้า และปริ้นออกเป็น PDF
+ */
 function generateProductReceipts() {
   let receiptContent = "<h2>Product Receipts</h2>";
 
   document.querySelectorAll(".product").forEach((product, index) => {
-    const productName = product.querySelector("h3").textContent;
+    const productName = product.querySelector("h5").textContent;
     const productPrice = parseFloat(
       product.querySelector(".add-to-cart").getAttribute("data-price")
     );
@@ -139,13 +146,7 @@ function generateProductReceipts() {
   return receiptContent;
 }
 
-function calculateTotalPrice() {
-  return Object.values(cart).reduce(
-    (total, item) => total + item.quantity * item.price,
-    0
-  );
-}
-
+/** ฟังก์ชันนี้ใช้สำหรับคำนวณราคารวมของสินค้า Cart ตอน Print Cart Reciept*/
 function generateCartReceipt() {
   let receiptContent = `
       <style>
@@ -153,10 +154,10 @@ function generateCartReceipt() {
           size: 100mm 100mm;
         }
         body {
-          width: 80mm;
-          height: 80mm;
+          width: 100mm;
+          height: 100mm;
           margin: 0;
-          padding: 10px;
+          padding: 2px;
           font-family: Arial, sans-serif;
         }
         h2 {
@@ -213,3 +214,5 @@ function generateCartReceipt() {
 
   return receiptContent;
 }
+
+// ++++++++++++++++++++++++++++
