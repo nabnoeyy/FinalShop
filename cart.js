@@ -157,7 +157,7 @@ function generateCartReceipt() {
           width: 100mm;
           height: 100mm;
           margin: 0;
-          padding: 2px;
+          padding: 1px;
           font-family: Arial, sans-serif;
         }
         h2 {
@@ -171,13 +171,14 @@ function generateCartReceipt() {
         }
         th, td {
           border: 1px solid #ddd;
-          padding: 8px;
+          padding: 5px;
           text-align: left;
         }
         th {
           background-color: #f2f2f2;
         }
       </style>
+      <p>SANGKONG SHOP!</p>
       <h2>Cart Receipt</h2>
       <table>
         <thead>
@@ -210,7 +211,9 @@ function generateCartReceipt() {
   receiptContent += `
         </tbody>
       </table>
-      <p>Total Price: $${totalPrice}</p>`;
+      <p>Total Price: $${totalPrice}</p>
+      <p>คุณ Kays Tel.088-888-8888</p>
+      `;
 
   return receiptContent;
 }
