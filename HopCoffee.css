@@ -1,0 +1,64 @@
+/* กำหนดพื้นหลัง */
+body {
+  background-color: #fcf3ee; /* สีพื้นหลังพาสเทล */
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* การตั้งค่าของ welcome-container */
+.welcome-container {
+  text-align: center;
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 10px rgba(125, 118, 118, 0.1);
+}
+
+/* การตั้งค่าของรูปหรือโลโก้ */
+.logo {
+  width: 300px; /* กำหนดความกว้างของรูป */
+  height: auto; /* ปรับความสูงตามสัดส่วน */
+  border-radius: 20px; /* ทำให้ขอบของรูปโค้งมน */
+  margin-bottom: 20px; /* เว้นระยะห่างระหว่างรูปกับข้อความ */
+}
+
+/* การตั้งค่าฟอนต์ของ h1 */
+.welcome-container h1 {
+  font-size: 3rem;
+  background: linear-gradient(90deg, #E40303, #FF8C00, #FFED00, #008026, #004DFF, #8B008B); /* สีรุ้งแบบเชื่อมต่อกัน */
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* การตั้งค่าของปุ่ม */
+.welcome-button {
+  padding: 15px 40px;
+  font-size: 1.5rem;
+  background-color: #E40303; /* เริ่มต้นด้วยสีแดง */
+  color: white;
+  border: none;
+  border-radius: 50px; /* ทำให้ปุ่มกลม */
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  background: linear-gradient(90deg, #E40303, #FF8C00, #FFED00, #008026, #004DFF, #8B008B); /* สีรุ้ง */
+}
+
+/* การเปลี่ยนแปลงเมื่อ hover */
+.welcome-button:hover {
+  background: linear-gradient(90deg, #8B008B, #004DFF, #008026, #FFED00, #FF8C00, #E40303); /* สีรุ้งกลับด้านเมื่อ hover */
+  transform: scale(1.1);
+}
+
+/* กำหนดข้อความพิเศษ */
+.welcome-container p {
+  font-size: 1.2rem;
+  color: #9E9E9E; /* สีเทาอ่อน */
+  margin-top: 20px;
+}

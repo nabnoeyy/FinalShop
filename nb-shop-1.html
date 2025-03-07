@@ -14,9 +14,16 @@
 
     <header>
         <nav>
-            <h1>
-                SANGKONG
-            </h1>
+            <h1>HOP Chafe</h1>
+            <ul>
+                <li><a href="main_index.html">Home</a></li>
+                <li><a href="main_index.html">Products</a></li>
+                <li><a href="https://www.facebook.com/HOPChafenpru">Contact</a></li>
+                <li><a href="Abount.html">About</a></li>
+                    <i class="fas fa-shopping-cart"></i> Cart (0)
+                </a></li>
+            </ul>
+        </nav>
             <ul>
                 <li><a href="main_index.html">Black</a></li>
             </ul>
@@ -27,72 +34,56 @@
         <div class="row">
             <div class="col-md-9">
                 <div class="logo d-flex justify-content-center" style="margin-bottom: 30px">
-                    <h1>New Collection 1!</h1><br /><br />
+                    <h1>📮ต้อนรับ Summer กับเมนูใหม่🌞🧋🐻</h1><br /><br />
+                    
                 </div>
 
                 <div id="products" class="row">
                     <!-- Product 1 -->
                     <div class="col-md-3 product">
-                        <img src="/product_img/image-1.jpg" alt="Product 1 Image" width="150px" height="150px" />
-                        <h5>Cheer Bear<br>$10</h5>
-                        <button class="btn btn-primary add-to-cart" data-product-id="Cheer Bear" data-price="10">
+                        <img src="product_img/Chanom2.jpg" alt="Product 1 Image" width="150px" height="150px" />
+                        <h5>ชาไต้หวัน สตรอเบอร์รี่นมสด</h5>
+                        <!-- Add to Cart Button -->
+                        <button class="btn btn-primary open-modal" data-product-id="ชาไต้หวัน สตรอเบอร์รี่นมสด" data-price="30">
                             Add to Cart
                         </button>
                     </div>
 
-                    <!-- Product 2 -->
                     <div class="col-md-3 product">
-                        <img src="/product_img/image-2.jpg" alt="Product 2 Image" width="150px" height="150px" />
-                        <h5>Grumpy Bear<br>$20</h5>
-                        <button class="btn btn-primary add-to-cart" data-product-id="Grumpy Bear" data-price="20">
+                        <img src="product_img/Chanom3.jpg" alt="Product 1 Image" width="150px" height="150px" />
+                        <h5>ชาเขียว สตรอเบอร์รี่นมสด</h5>
+                        <!-- Add to Cart Button -->
+                        <button class="btn btn-primary open-modal" data-product-id="ชาเขียว สตรอเบอร์รี่นมสด" data-price="30">
                             Add to Cart
                         </button>
                     </div>
 
-                    <!-- Product 3 -->
                     <div class="col-md-3 product">
-                        <img src="/product_img/image-3.jpg" alt="Product 3 Image" width="150px" height="150px" />
-                        <h5>Funshine Bear<br>$30</h5>
-                        <button class="btn btn-primary add-to-cart" data-product-id="Funshine Bear" data-price="30">
+                        <img src="product_img/Chanom4.jpg" alt="Product 1 Image" width="150px" height="150px" />
+                        <h5>ชาไทย สตรอเบอร์รี่นมสด</h5>
+                        <!-- Add to Cart Button -->
+                        <button class="btn btn-primary open-modal" data-product-id="ชาไทย สตรอเบอร์รี่นมสด" data-price="30">
                             Add to Cart
                         </button>
                     </div>
 
-                    <!-- Product 4 -->
                     <div class="col-md-3 product">
-                        <img src="/product_img/image-4.jpg" alt="Product 4 Image" width="150px" height="150px" />
-                        <h5>Share Bear<br>$40</h5>
-                        <button class="btn btn-primary add-to-cart" data-product-id="Share Bear" data-price="40">
+                        <img src="product_img/Chanom5.jpg" alt="Product 1 Image" width="150px" height="150px" />
+                        <h5>โกโก้ สตรอเบอร์รี่นมสด</h5>
+                        <!-- Add to Cart Button -->
+                        <button class="btn btn-primary open-modal" data-product-id="โกโก้ สตรอเบอร์รี่นมสด" data-price="30">
                             Add to Cart
                         </button>
                     </div>
+                    <!-- Add similar structure for other products -->
 
-                    <!-- Product 5 -->
-                    <div class="col-md-3 product">
-                        <img src="/product_img/image-5.jpg" alt="Product 5 Image" width="150px" height="150px" />
-                        <h5>Harmony Bear<br>$50</h5>
-                        <button class="btn btn-primary add-to-cart" data-product-id="Harmony Bear" data-price="10">
-                            Add to Cart
-                        </button>
-                    </div>
-
-                    <!-- Product 6 -->
-                    <div class="col-md-3 product">
-                        <img src="/product_img/image-6.jpg" alt="Product 6 Image" width="150px" height="150px" />
-                        <h5>Tenderheart bear<br>$60</h5>
-                        <button class="btn btn-primary add-to-cart" data-product-id="Tenderheart bear" data-price="10">
-                            Add to Cart
-                        </button>
-                    </div>
-                    
                 </div>
             </div>
 
             <div class="col-md-3">
                 <h2 style="margin-top: 30px">
                     Cart
-                    <img src="/product_img/Cartpng.png" alt="Cartpng" width="34px" height="34px"
-                        style="margin-top: -11px" />
+                    <img src="/product_img/Cartpng.png" alt="Cartpng" width="34px" height="34px" style="margin-top: -11px" />
                 </h2>
 
                 <div id="cart" class="mt-3">
@@ -101,7 +92,61 @@
                 <button class="btn btn-success mt-3" id="printCart">
                     Print Cart Receipt
                 </button>
-                <!-- <button class="btn btn-success mt-3" id="printProductReceipts">Print Product Receipts</button> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for selecting options -->
+    <div class="modal" tabindex="-1" role="dialog" id="cartModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Customize Your Drink</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="cart-form">
+                        <!-- Topping Selection -->
+                        <label for="topping">Topping</label>
+                        <select id="topping" class="form-control">
+                            <option value="Pearl" data-price="0">ไข่มุก $0</option>
+                            <option value="Aloe Vera" data-price="10">บุก $10</option>
+                            <option value="Chia Seed" data-price="10">วุ้น $10</option>
+                             <option value="Chia Seed" data-price="15">เม็ดป๊อป $15</option>
+                        </select>
+                        
+                        <!-- Sugar Level -->
+                        <label for="sugar">Sugar Level</label>
+                        <select id="sugar" class="form-control">
+                            <option value="Low">หวานน้อย</option>
+                            <option value="Medium" selected>หวานปกติ</option>
+                            <option value="High">หวานมาก</option>
+                        </select>
+
+                        <!-- Size Selection -->
+                        <select id="size" class="form-control">
+                            <option value="Small" data-price="19">เล็ก $19</option>
+                            <option value="Medium" data-price="24">กลาง $24</option>
+                            <option value="Large" data-price="29">ใหญ่ $29</option>
+                        </select>
+                        
+
+                        <div class="d-flex align-items-center mt-3">
+                            <label class="me-2">Quantity:</label>
+                            <button type="button" class="btn btn-outline-secondary" onclick="updateQuantity(-1)">-</button>
+<span id="quantity" class="mx-3">1</span>
+<button type="button" class="btn btn-outline-secondary" onclick="updateQuantity(1)">+</button>
+
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="addToCart">Add to Cart</button>
+                </div>
             </div>
         </div>
     </div>
@@ -112,6 +157,88 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script src="cart.js"></script>
+    <script>
+        let cart = {}; // ตัวแปรเก็บสินค้าในตะกร้า
+        let quantity = 1; // ค่าจำนวนเริ่มต้น
+    
+        // ฟังก์ชันอัปเดตจำนวนสินค้า
+        function updateQuantity(amount) {
+    quantity = Math.max(1, quantity + amount); // ห้ามจำนวนติดลบ
+    document.getElementById("quantity").innerText = quantity;
+}
+
+    
+        // เปิด Modal เมื่อกดปุ่ม Add to Cart
+        document.querySelectorAll('.open-modal').forEach(button => {
+            button.addEventListener('click', function() {
+                const productKey = this.getAttribute('data-product-id');
+    
+                // เก็บ productKey ในปุ่ม Add to Cart
+                document.getElementById('addToCart').setAttribute('data-product-id', productKey);
+    
+                // รีเซ็ตจำนวนให้เป็น 1 ทุกครั้งที่เปิด Modal
+                quantity = 1;
+                document.getElementById("quantity").innerText = quantity;
+    
+                $('#cartModal').modal('show');
+            });
+        });
+    
+        // ฟังก์ชันเพิ่มสินค้าเข้าตะกร้า
+        document.getElementById('addToCart').addEventListener('click', function() {
+            const productKey = this.getAttribute('data-product-id');
+            const topping = document.getElementById('topping').value;
+            const sugar = document.getElementById('sugar').value;
+            const sizeElement = document.getElementById('size');
+            const size = sizeElement.value;
+            const sizePrice = parseFloat(sizeElement.options[sizeElement.selectedIndex].getAttribute('toping-price')); // อ่านราคาจากตัวเลือก
+            const toppingPrice = parseFloat(document.getElementById('topping').selectedOptions[0].getAttribute('data-price')); // ราคาท็อปปิ้ง
+    
+            const finalPrice = sizePrice + toppingPrice; // รวมราคาท็อปปิ้งกับขนาด
+            const productId = `${productKey} (${size}) (${sugar})`; // ทำให้แยกไซส์ได้
+    
+            if (!cart[productKey]) {
+                cart[productKey] = { 
+                    quantity: quantity, 
+                    price: finalPrice,
+                    topping: topping,
+                    sugar: sugar,
+                    size: size
+                };
+            } else {
+                cart[productKey].quantity += quantity; // ถ้ามีสินค้าอยู่แล้ว เพิ่มจำนวน
+            }
+    
+            updateCartDisplay();
+            $('#cartModal').modal('hide'); // ปิด Modal
+        });
+    
+        function updateCartDisplay() {
+    const cartElement = document.getElementById("cart");
+    cartElement.innerHTML = "";
+
+    if (Object.keys(cart).length === 0) {
+        cartElement.innerHTML = "<p>No items in cart.</p>";
+        return;
+    }
+
+    Object.keys(cart).forEach(item => {
+        const cartItem = cart[item];
+        const itemElement = document.createElement("div");
+        itemElement.classList.add("cart-item");
+        itemElement.innerHTML = `
+            <p><strong>${item}</strong></p>
+            <p>🔹 จำนวน: ${cartItem.quantity} | ราคา: $${cartItem.price * cartItem.quantity}</p>
+            <p>🔹 ท็อปปิ้ง: ${cartItem.topping} | น้ำตาล: ${cartItem.sugar}</p>
+            <hr>
+        `;
+        cartElement.appendChild(itemElement);
+    });
+}
+
+    </script>
+    
+
 </body>
 
 </html>

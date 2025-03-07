@@ -1,16 +1,42 @@
 const cart = {};
 
 // Event สำหรับเลือก Topping
-document.getElementById("topping").addEventListener("change", function () {
-  let selectedOption = this.options[this.selectedIndex];
-  let topping = selectedOption.value;
-  let price = parseFloat(selectedOption.getAttribute("data-price")) || 0;
+// เมื่อคลิกปุ่ม Add to Cart
+document.getElementById('addToCart').addEventListener('click', function() {
+  const productKey = this.getAttribute('data-product-id');
+  const basePrice = 39;
 
-  console.log(`เลือก: ${topping}, ราคา: ${price}`);
+  const toppingElement = document.getElementById('topping');
+  const topping = toppingElement.options[toppingElement.selectedIndex].text;
+  const toppingPrice = parseFloat(toppingElement.options[toppingElement.selectedIndex].getAttribute('data-price')) || 0;
+
+
+
+  const sugar = document.getElementById('sugar').value;
+  const productKeyWithSize = `${productKey}-${size}`;
+
+  // ตรวจสอบว่ามีสินค้านี้ในตะกร้าแล้วหรือไม่
+  if (!cart[productKeyWithSize]) {
+    // สินค้าใหม่
+    cart[productKeyWithSize] = { 
+      quantity: 1,
+      basePrice: basePrice,
+      sizePrice: sizePrice,
+      topping: topping,
+      toppingPrice: toppingPrice,
+      sugar: sugar,
+      totalPrice: basePrice +  toppingPrice // คำนวณราคาเริ่มต้น
+    };
+  } else {
+    // เพิ่มจำนวนสินค้า
+    cart[productKeyWithSize].quantity += 1;  
+    cart[productKeyWithSize].totalPrice = (cart[productKeyWithSize].basePrice + cart[productKeyWithSize].toppingPrice) * cart[productKeyWithSize].quantity;
+  }
+
+  console.log("Cart after adding item:", cart);
+  updateCartDisplay();  
+  $('#cartModal').modal('hide');
 });
-
-// Event สำหรับเพิ่มสินค้าในตะกร้า
-
 
 // ฟังก์ชันอัปเดตรถเข็น
 function updateCartDisplay() {
@@ -23,7 +49,7 @@ function updateCartDisplay() {
 
   const thead = document.createElement("thead");
   const headerRow = document.createElement("tr");
-  ["Product", "Size", "Quantity", "Price", "Topping", "Total", "Actions"].forEach((headerText) => {
+  ["Product", "Size", "Quantity", "Price", "Topping", "Total", "Actions"].forEach(headerText => {
     const th = document.createElement("th");
     th.textContent = headerText;
     headerRow.appendChild(th);
@@ -40,12 +66,12 @@ function updateCartDisplay() {
 
     const tr = document.createElement("tr");
     tr.innerHTML = `
-      <td>${productKey}</td>
-      <td>${item.size}</td>
+      <td>${productKey.split('-')[0]}</td>
+      <td>${productKey.split('-')[1]}</td>
       <td>${item.quantity}</td>
-      <td>$${(item.basePrice + item.sizePrice).toFixed(2)}</td>
-      <td>${item.topping} ($${item.toppingPrice})</td>
-      <td>$${itemTotalPrice.toFixed(2)}</td>
+      <td>฿${item.basePrice + item.sizePrice}</td>
+      <td>${item.topping} (฿${item.toppingPrice})</td>
+      <td>฿${itemTotalPrice.toFixed(2)}</td>
       <td>
         <button class="btn btn-danger delete-product" data-product-id="${productKey}">
           <i class="fa-solid fa-trash-can"></i>
@@ -60,11 +86,10 @@ function updateCartDisplay() {
   cartElement.appendChild(table);
 
   const totalPriceElement = document.createElement("p");
-  totalPriceElement.textContent = `Total Price: $${isNaN(totalPrice) ? "0.00" : totalPrice.toFixed(2)}`;
-
+  totalPriceElement.textContent = `Total Price: ฿${totalPrice.toFixed(2)}`;
   cartElement.appendChild(totalPriceElement);
 
-  document.querySelectorAll(".delete-product").forEach((button) => {
+  document.querySelectorAll(".delete-product").forEach(button => {
     button.addEventListener("click", () => {
       const productKey = button.getAttribute("data-product-id");
       delete cart[productKey];
@@ -96,17 +121,7 @@ document.querySelectorAll('.open-modal').forEach(button => {
   });
 });
 
-// เมื่อมีการเปลี่ยนขนาดใน modal
-document.getElementById('size').addEventListener('change', function() {
-  const selectedSize = this.value;
-  updateModalPrice(selectedSize);
-});
 
-let quantity = 1;
-function updateQuantity(amount) {
-  quantity = Math.max(1, quantity + amount); // ไม่ให้ติดลบ
-  document.getElementById("quantity").innerText = quantity;
-}
 
 
 
@@ -148,8 +163,6 @@ document.getElementById('addToCart').addEventListener('click', function() {
 
   const productKeyWithSize = `${productKey}-${size}`;
 
-
-
   // ตรวจสอบว่ามีสินค้านี้ในตะกร้าแล้วหรือไม่
   if (!cart[productKeyWithSize]) {
     // สินค้าใหม่ในตะกร้า
@@ -159,15 +172,14 @@ document.getElementById('addToCart').addEventListener('click', function() {
       topping: topping,
       toppingPrice: toppingPrice,
       sugar: sugar,
-      size: size,
       sizePrice: sizePrice,
-      totalPrice:(basePrice + sizePrice + toppingPrice) * quantity
+      totalPrice:(basePrice  + toppingPrice) * quantity
     };
   } else {
     // เพิ่มจำนวนสินค้า
     cart[productKeyWithSize].quantity += 1;  // เพิ่มจำนวนสินค้าให้เป็นตัวแปร quantity ที่มีการอัปเดตแล้ว
     // คำนวณราคาใหม่
-    cart[productKeyWithSize].totalPrice = (cart[productKeyWithSize].basePrice + cart[productKeyWithSize].toppingPrice + cart[productKeyWithSize].sizePrice) * cart[productKeyWithSize].quantity;
+    cart[basePrice].totalPrice = (cart[basePrice].basePrice + cart[basePrice].toppingPrice ) * cart[basePrice].quantity;
   }
 
   console.log("Cart after adding item:", cart);
@@ -196,80 +208,12 @@ function printReceipt(title, content) {
 function generateCartReceipt() {
   let receiptContent = `
     <style>
-   @page { 
-  size: 100mm 100mm; 
-  margin: 0; 
-}
-
-body { 
-  width: 100mm; 
-  height: 100mm; 
-  margin: 0; 
-  padding: 1px; 
-  font-family: 'Arial', sans-serif;
-  font-size: 12px;
-}
-
-h2 {
-  text-align: center;
-  margin-bottom: 10px;
-  font-size: 16px;
-  color: #333;
-}
-
-p {
-  text-align: center;
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 15px;
-  color: #555;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 10px;
-  font-size: 12px;
-}
-
-th, td {
-  border: 1px solid #ddd;
-    padding: 8px;
-  text-align: center;
-}
-
-th {
-  background-color: #f2f2f2;
-  font-weight: bold;
-  color: #333;
-}
-
-td {
-  text-align: right;
-}
-
-td:first-child, th:first-child {
-  text-align: left;
-}
-
-tfoot {
-  font-weight: bold;
-}
-
-tfoot td {
-  text-align: right;
-  padding-top: 10px;
-}
-
-footer {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 12px;
-  color: #888;
-  text-align: center;
-}
-
-
+      @page { size: 100mm 100mm; }
+      body { width: 100mm; height: 100mm; margin: 0; padding: 1px; font-family: Arial, sans-serif; }
+      h2 { text-align: center; margin-bottom: 10px; }
+      table { width: 100%; border-collapse: collapse; margin-bottom: 10px; }
+      th, td { border: 1px solid #ddd; padding: 5px; text-align: left; }
+      th { background-color: #f2f2f2; }
     </style>
     <p>SANGKONG SHOP!</p>
     <h2>Cart Receipt</h2>
@@ -277,36 +221,40 @@ footer {
       <thead>
         <tr>
           <th>Product</th>
-          <th>Sweet</th>
+          <th>Size</th>
           <th>Quantity</th>
-          <th>Topping</th>
           <th>Price</th>
+          <th>Topping</th>
           <th>Total</th>
         </tr>
       </thead>
       <tbody>
   `;
-
   let totalPrice = 0;
 
   for (const productKey in cart) {
     const item = cart[productKey];
-    const itemTotalPrice = (item.productPrice + item.toppingPrice) * item.quantity; // คำนวณราคาทั้งหมด
+    const itemTotalPrice = (item.basePrice + item.sizePrice + item.toppingPrice) * item.quantity;
+
 
     receiptContent += `
       <tr>
         <td>${productKey}</td>
-        <td>${item.sugar}</td>
         <td>${item.quantity}</td>
-        <td>${item.topping} ($${item.toppingPrice})</td>
-        <td>$${item.productPrice.toFixed(2)}</td>
-        <td>$${itemTotalPrice.toFixed(2)}</td>
+        <td>฿39</td>
+        <td>${item.topping} (฿${item.toppingPrice})</td>
+        <td>฿${itemTotalPrice.toFixed(2)}</td>
       </tr>
     `;
-    totalPrice += itemTotalPrice;  // ใช้ totalPrice เพื่อคำนวณผลรวม
+    totalPrice += itemTotalPrice;
   }
 
-  receiptContent += `</tbody></table><p>Total Price: $${totalPrice.toFixed(2)}</p><p>คุณ Kays Tel.088-888-8888</p>`;
+  receiptContent += `
+      </tbody>
+    </table>
+    <p>Total Price: $${totalPrice.toFixed(2)}</p>
+    <p>คุณ Kays Tel.088-888-8888</p>
+  `;
 
   return receiptContent;
 }
