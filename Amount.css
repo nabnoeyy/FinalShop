@@ -6,6 +6,21 @@ body {
     padding: 0;
 }
 
+@media (max-width: 600px) {
+    .my-container {
+      width: 95%;
+      padding: 10px;
+    }
+  }
+  
+  /* สำหรับแท็บเล็ต */
+  @media (min-width: 601px) and (max-width: 1024px) {
+    .my-container {
+      width: 80%;
+    }
+  }
+  
+
 /* Header */
 header {
     background: linear-gradient(#8cc7f1, #fdff7a); /* สีพื้นหลังแบบไล่สี */
