@@ -30,7 +30,6 @@ body {
 .welcome-container h1 {
   font-size: 3rem;
   background: linear-gradient(90deg, #E40303, #FF8C00, #FFED00, #008026, #004DFF, #8B008B); /* สีรุ้งแบบเชื่อมต่อกัน */
-  -webkit-background-clip: text;
   color: transparent;
   margin-bottom: 20px;
   font-weight: bold;
