@@ -271,7 +271,9 @@ footer {
 
 
     </style>
-    <p>SANGKONG SHOP!</p>
+    <p>HOP COFFEE!</p>
+    <p>ตั้งอยู่ที่ 75/55 ตำบลวังตะกู อำเภอเมืองนครปฐม จังหวัดนครปฐม 73000。</p>
+    <br>
     <h2>Cart Receipt</h2>
     <table>
       <thead>
@@ -306,7 +308,7 @@ footer {
     totalPrice += itemTotalPrice;  // ใช้ totalPrice เพื่อคำนวณผลรวม
   }
 
-  receiptContent += `</tbody></table><p>Total Price: $${totalPrice.toFixed(2)}</p><p>คุณ Kays Tel.088-888-8888</p>`;
+  receiptContent += `</tbody></table><p>Total Price: $${totalPrice.toFixed(2)}</p><p>คุณ Nabnoey Tel.0986438616</p>`;
 
   return receiptContent;
 }

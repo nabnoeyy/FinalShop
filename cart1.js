@@ -143,7 +143,9 @@ document.getElementById("printCart").addEventListener("click", () => {
         th, td { border: 1px solid #ddd; padding: 5px; text-align: left; }
         th { background-color: #f2f2f2; }
       </style>
-      <p>SANGKONG SHOP!</p>
+      <p>HOP COFFEE!</p>
+          <p>ตั้งอยู่ที่ 75/55 ตำบลวังตะกู อำเภอเมืองนครปฐม จังหวัดนครปฐม 73000。</p>
+          <br>
       <h2>Cart Receipt</h2>
       <table>
         <thead>
@@ -178,7 +180,7 @@ document.getElementById("printCart").addEventListener("click", () => {
       totalPrice += itemTotalPrice;  // ✅ ใช้ totalPrice เพื่อคำนวณผลรวม
     }
 
-    receiptContent += `</tbody></table><p><strong>รวมทั้งหมด: $${totalPrice.toFixed(2)}</strong></p><p>คุณ Kays Tel.088-888-8888</p>`;
+    receiptContent += `</tbody></table><p><strong>รวมทั้งหมด: $${totalPrice.toFixed(2)}</strong></p><p>คุณ Nabnoeyy Tel.0986438616</p>`;
 
     return receiptContent;
 }
